@@ -4,7 +4,7 @@ void input_fun(char *input, size_t length)
 {
 	if (fgets(input, length, stdin) == NULL)
 	{
-		if(feof(stdin))
+		if (feof(stdin))
 		{
 			print_fun("\n");
 			exit(0);
