@@ -1,9 +1,0 @@
-#include"header_file.h"
-
-int main(void)
-{
-	char *input [] = NULL;
-	while (fgets(input, sizeof(input), stdin)!= NULL)
-		printf("$ ");
-	print_fun("No such file or directory");
-}
