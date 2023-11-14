@@ -3,6 +3,7 @@
 void input_fun(char **input, size_t *length)
 {
 	ssize_t read_result;
+
 	read_result = getline(input, length, stdin);
 
 	if (read_result == -1)
@@ -57,8 +58,7 @@ void execute_fun(const char *input)
 int main(void)
 {
 	char *input = NULL;
-	size_t length =0;
-	
+	size_t length = 0;	
 	while (1)
 	{
 		display_prompt_fun();
