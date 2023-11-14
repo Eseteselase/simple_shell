@@ -11,5 +11,6 @@ extern char **environ;
 
 void print_fun(const char *input);
 void display_prompt_fun(void);
+void input_fun(char **input, size_t *length);
 
 #endif
