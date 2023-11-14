@@ -20,6 +20,7 @@ void execute_fun_path(char *input)
 		char *token;
 		char **cmd = malloc(2 * sizeof(char *));
 		int i = 0;
+
 		if (cmd == NULL)
 		{
 			perror("malloc");
