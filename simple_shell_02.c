@@ -46,7 +46,6 @@ int main(void)
 
 	while (1)
 	{
-		display_prompt_fun();
 		input_fun(&input, &length);
 		execute_fun_token(input);
 	}
