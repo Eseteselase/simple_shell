@@ -5,6 +5,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<unistd.h>
+#include<fcntl.h>
 #include<sys/wait.h>
 
 extern char **environ;
@@ -12,5 +13,6 @@ extern char **environ;
 void print_fun(const char *input);
 void display_prompt_fun(void);
 void input_fun(char **input, size_t *length);
+int env_fun(int argc, char **argv, char **env);
 
 #endif
