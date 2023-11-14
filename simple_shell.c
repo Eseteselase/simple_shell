@@ -23,7 +23,6 @@ void input_fun(char **input, size_t *length)
 		(*input)[read_result - 1] = '\0';
 }
 
-extern char **environ;
 void execute_fun(const char *input)
 {
 	pid_t child_process_id = fork();
