@@ -1,8 +1,14 @@
 #include"shell.h"
 
-void execute_fun_token(char *input)
+void execute_fun_path(char *input)
 {
 	pid_t child_process_id = fork();
+
+	if (access(input, X_OK) == -1)
+	{
+		print_fun("Command not found\n");
+		return;
+	}
 
 	if (child_process_id == -1)
 	{
@@ -14,7 +20,6 @@ void execute_fun_token(char *input)
 		char *token;
 		char **cmd = malloc(2 * sizeof(char *));
 		int i = 0;
-
 		if (cmd == NULL)
 		{
 			perror("malloc");
@@ -47,7 +52,7 @@ int main(void)
 	while (1)
 	{
 		input_fun(&input, &length);
-		execute_fun_token(input);
+		execute_fun_path(input);
 	}
 	if (input != NULL)
 	{
