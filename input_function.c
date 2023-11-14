@@ -1,8 +1,10 @@
 #include"header_file.h"
 
-void input_fun(char *input, size_t length)
+void input_fun(char **input, size_t *length)
 {
-	if (fgets(input, length, stdin) == NULL)
+	ssize_t read_result;
+	read_result = getline(input, length, stdin);
+	if (read_result == -1)
 	{
 		if (feof(stdin))
 		{
@@ -15,5 +17,6 @@ void input_fun(char *input, size_t length)
 			exit(1);
 		}
 	}
-	input[strcspn(input, "\n")] = '\0';
+	if ((*input)[read_result - 1] == '\n')
+		(*input)[read_result - 1] = '\0';
 }
