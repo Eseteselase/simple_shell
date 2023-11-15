@@ -4,6 +4,33 @@
  * execute_fun - execve file
  * @input: take the command
  */
+char **tokenize_input(char *input)
+{
+	char *token;
+	char **cmd = NULL;
+	int i = 0;
+
+	token = strtok(input, " ");
+	while (token != NULL)
+	{
+		cmd = realloc(cmd, (i + 2) * sizeof(char *));
+		if (cmd == NULL)
+		{
+			perror("realloc");
+			exit(1);
+		}
+		cmd[i] = strdup(token);
+		if (cmd[i] == NULL)
+		{
+			perror("strdup");
+			exit(1);
+		}
+		i++;
+		token = strtok(NULL, " ");
+	}
+	cmd[i] = NULL;
+	return cmd;
+}
 
 void execute_fun(char *input)
 {
@@ -17,11 +44,9 @@ void execute_fun(char *input)
 	if (child_process_id == 0)
 	{
 		char **cmd = tokenize_input(input);
-
-		if (execve(cmd[0], cmd, NULL) == -1)
+		if(execve(cmd[0], cmd, NULL) == -1)
 		{
 			int j = 0;
-
 			perror("execve");
 			while (cmd[j] != NULL)
 			{
@@ -35,7 +60,6 @@ void execute_fun(char *input)
 	else
 	{
 		pid_t terminated_child_id = wait(NULL);
-
 		if (terminated_child_id == -1)
 		{
 			perror("wait");

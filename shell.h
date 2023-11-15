@@ -11,6 +11,8 @@
 void print_fun(const char *input);
 void display_prompt_fun(void);
 void input_fun(char **input, size_t *length);
-void execute_fun(const char *input);
+char **tokenize_input(char *input);
+void trim_newline(char *str);
+void execute_fun(char *input);
 
 #endif
