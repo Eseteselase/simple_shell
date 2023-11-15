@@ -16,21 +16,22 @@ void execute_fun(const char *input)
 	}
 	if (child_process_id == 0)
 	{
-		char **cmd = malloc(2 * sizeof(char *));
+		char path[300];
+		char *args[2];
 
-		if (cmd == NULL)
+		if ((size_t)snprintf(path, sizeof(path), "/bin/%s", input) >= sizeof(path))
 		{
-			perror("malloc");
+			fprintf(stderr, "Path too long\n");
 			exit(1);
 		}
-		cmd[0] = (char *)input;
-		cmd[1] = NULL;
-		if (execve(input, cmd, environ) == -1)
-		{
-			perror("./shell");
-			free(cmd);
-			exit(1);
-		}
+
+		args[0] = (char *)input;
+		args[1] = NULL;
+
+		execvp(input, args);
+
+		perror("execvp");
+		exit(1);
 	}
 	else
 		wait(NULL);
