@@ -18,18 +18,16 @@ void execute_fun(char *input)
 	{
 		char **cmd = tokenize_input(input);
 
-		char *command_path = find_command_path(cmd[0]);
+		if (execve(cmd[0], cmd, NULL) == -1)
+		{
+			int j = 0;
 
-		if (command_path == NULL)
-		{
-			fprintf(stderr, "Command not found: %s\n", cmd[0]);
-			exit(1);
-		}
-		if (execve(command_path, cmd, NULL) == -1)
-		{
 			perror("execve");
-			fprintf(stderr, "Failed to execute command: %s\n", cmd[0]);
-			free(command_path);
+			while (cmd[j] != NULL)
+			{
+				free(cmd[j]);
+				j++;
+			}
 			free(cmd);
 			exit(1);
 		}
