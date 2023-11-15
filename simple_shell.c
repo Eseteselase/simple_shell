@@ -1,5 +1,10 @@
 #include"shell.h"
 
+/**
+ * execute_fun - execve file
+ * @input: take the command
+ */
+
 void execute_fun(const char *input)
 {
 	pid_t child_process_id = fork();
@@ -31,6 +36,11 @@ void execute_fun(const char *input)
 		wait(NULL);
 }
 
+/**
+ * main - will execute everyting
+ * Return: Always 0
+ */
+
 int main(void)
 {
 	char *input = NULL;
@@ -38,6 +48,7 @@ int main(void)
 
 	while (1)
 	{
+		display_prompt_fun();
 		input_fun(&input, &length);
 		execute_fun(input);
 	}
