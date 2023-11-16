@@ -15,7 +15,6 @@ int main(void)
 		display_prompt_fun();
 		input_fun(&input, &length);
 		execute_fun(input);
-		free(input);
 	}
 	return (0);
 }
