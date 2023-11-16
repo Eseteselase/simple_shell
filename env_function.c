@@ -2,18 +2,17 @@
 
 /**
  * execute_env - to run env
- * 
  */
 
 void execute_env(void)
 {
-	extern char **environ;
+	char **env = environ;
 
-	int i =0;
+	int i = 0;
 
-	while (environ[i] != NULL)
+	while (env[i] != NULL)
 	{
-		printf("%s\n", environ[i]);
+		printf("%s\n", env[i]);
 		i++;
 	}
 }

@@ -8,6 +8,8 @@
 #include<sys/wait.h>
 #include<sys/wait.h>
 
+extern char **environ;
+
 void print_fun(const char *input);
 void display_prompt_fun(void);
 char **tokenize_input(char *input);
