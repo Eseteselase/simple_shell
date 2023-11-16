@@ -9,6 +9,8 @@ void execute_fun(char *input)
 	char *command_path = find_command_path(cmd[0]);
 	pid_t child_process_id;
 
+	if (strcmp(cmd[0], "exit") == 0)
+		handle_exit(cmd);
 	if (command_path == NULL)
 	{
 		fprintf(stderr, "Command not found: %s\n", cmd[0]);
