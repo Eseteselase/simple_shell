@@ -10,10 +10,10 @@
 
 void print_fun(const char *input);
 void display_prompt_fun(void);
-void input_fun(char **input, size_t *length);
 char **tokenize_input(char *input);
-void trim_newline(char *str);
+void input_fun(char **input, size_t *length);
 char *find_command_path(const char *command);
+char *create_full_path(const char *dir, const char *command);
 void execute_fun(char *input);
 
 #endif

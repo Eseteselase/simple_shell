@@ -15,9 +15,7 @@ int main(void)
 		display_prompt_fun();
 		input_fun(&input, &length);
 		execute_fun(input);
-		trim_newline(input);
-	}
-	if (input != NULL)
 		free(input);
+	}
 	return (0);
 }
