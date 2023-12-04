@@ -24,6 +24,12 @@ char **tokenize_input(char *input)
 		if (cmd[i] == NULL)
 		{
 			perror("strdup");
+			while (i > 0)
+			{
+				i--;
+				free(cmd[i]);
+			}
+			free(cmd);
 			exit(1);
 		}
 		i++;

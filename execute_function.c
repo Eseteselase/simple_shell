@@ -45,6 +45,7 @@ void execute_command(char **cmd, char *command_path)
 			fprintf(stderr, "Failed to execute command: %s\n", cmd[0]);
 			exit(1);
 		}
+		free(cmd);
 	}
 	else
 	{

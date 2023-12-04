@@ -10,26 +10,22 @@ char *find_command_path(const char *command)
 	char *path_copy = strdup(path);
 	char *dir = strtok(path_copy, ":");
 
-/**	if (path == NULL)
+	if (strchr(command, '/') != NULL)
+	{
+		if (access(command, X_OK) == 0)
+			return (strdup(command));
+		return (NULL);
+	}
+	if (path == NULL)
 	{
 		perror("getenv");
 		exit(1);
-	}*/
+	}
 	if (path_copy == NULL)
 	{
 		perror("strdup");
 		exit(1);
 	}
-	if (strchr(command, '/') != NULL)
-        {
-                if (access(command, X_OK) == 0)
-		{
-			free(path_copy);
-                        return (strdup(command));
-		}
-		free(path_copy);
-                return (NULL);
-        }
 	while (dir != NULL)
 	{
 		char *full_path = create_full_path(dir, command);
