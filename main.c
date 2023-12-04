@@ -15,5 +15,4 @@ int main(void)
 		input_fun(&input, &length);
 		execute_fun(input);
 	}
-	return (0);
 }

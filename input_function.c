@@ -9,14 +9,12 @@
 void input_fun(char **input, size_t *length)
 {
 	ssize_t read_result;
-
 	read_result = getline(input, length, stdin);
 
 	if (read_result == -1)
 	{
 		if (feof(stdin))
 		{
-			print_fun("\n");
 			exit(0);
 		}
 		else
